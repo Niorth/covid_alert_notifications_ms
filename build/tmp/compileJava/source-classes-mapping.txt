@@ -1,0 +1,6 @@
+fr/projetiwa/covid_alert_notifications_ms/CovidAlertNotificationsMsApplication.java
+ fr.projetiwa.covid_alert_notifications_ms.CovidAlertNotificationsMsApplication
+fr/projetiwa/covid_alert_notifications_ms/controllers/NotificationsController.java
+ fr.projetiwa.covid_alert_notifications_ms.controllers.NotificationsController
+fr/projetiwa/covid_alert_notifications_ms/services/NotificationsService.java
+ fr.projetiwa.covid_alert_notifications_ms.services.NotificationsService
