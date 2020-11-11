@@ -7,17 +7,15 @@ import java.util.Collections;
 
 public class NotificationsService {
 
-    public Boolean userIsNegative(Long user_id){ //mettre userID
-        HttpHeaders headers = new HttpHeaders(); // set Content-Type and Accept headers
+    public Boolean userIsNegative(Long personId){
+        HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)); // example of custom header
-        headers.set("X-Request-Source", "Desktop"); // build the request
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity request = new HttpEntity(headers);
         RestTemplate restTemplate = new RestTemplate();
-        String serviceUrl = "http://localhost:8080/personState";
+        String serviceUrl = "http://localhost:3002/personState/isNegative?personId="+personId;
         ResponseEntity<Boolean> response = restTemplate.exchange( serviceUrl, HttpMethod.GET, request, Boolean.class, 1 );
         Boolean isNegative = response.getBody();
-        System.out.println(isNegative);
         return isNegative;
     }
 
