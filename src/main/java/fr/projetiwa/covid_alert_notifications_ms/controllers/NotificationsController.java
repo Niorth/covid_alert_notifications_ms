@@ -16,8 +16,9 @@ public class NotificationsController {
 
     @GetMapping
     @RequestMapping("/mustbenotified")
-    public Boolean mustbenotified  ( @RequestParam("personId") Long personId ) {
+    @CrossOrigin(origins="*")
+    public Boolean mustbenotified  ( @RequestParam("token") String token ) {
         notificationsService = new NotificationsService();
-        return notificationsService.userIsNegative(personId);
+        return notificationsService.userIsNegative(token);
     }
 }
