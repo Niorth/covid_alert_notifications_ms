@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.*;
 public class NotificationsController {
     private NotificationsService notificationsService;
 /*
-        if(notificationsService.userIsNegative(person_id) && notificationsService.userIsSuspicious(person_id)){
+        if(notificationsService.userIsNegative(token) && notificationsService.userIsSuspicious(token)){
             return true;
         }
         return false;
     */
 
-    @GetMapping
-    @RequestMapping("/mustbenotified")
+    @GetMapping("/mustbenotified")
     @CrossOrigin(origins="*")
-    public Boolean mustbenotified  ( @RequestParam("token") String token ) {
+    public Boolean mustbenotified  (@RequestHeader (name="Authorization") String token) {
+        System.out.println("token controller " + token);
+
         notificationsService = new NotificationsService();
         return notificationsService.userIsNegative(token);
     }
