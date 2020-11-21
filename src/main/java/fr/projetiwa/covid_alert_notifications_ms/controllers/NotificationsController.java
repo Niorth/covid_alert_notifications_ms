@@ -17,9 +17,16 @@ public class NotificationsController {
     @GetMapping("/mustbenotified")
     @CrossOrigin(origins="*")
     public Boolean mustbenotified  (@RequestHeader (name="Authorization") String token) {
-        System.out.println("token controller " + token);
-
         notificationsService = new NotificationsService();
-        return notificationsService.userIsNegative(token);
+
+        if(notificationsService.userIsNew(token)){
+            System.out.println("user is new");
+            return false;
+        }else if(notificationsService.userIsNegative(token) && notificationsService.userIsSuspicious(token)){
+            System.out.println("user is negative and suspicious");
+            return true;
+        }
+        return false;
+
     }
 }
