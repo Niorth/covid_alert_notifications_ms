@@ -7,12 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/notifications")
 public class NotificationsController {
     private NotificationsService notificationsService;
-/*
-        if(notificationsService.userIsNegative(token) && notificationsService.userIsSuspicious(token)){
-            return true;
-        }
-        return false;
-    */
 
     @GetMapping("/mustbenotified")
     @CrossOrigin(origins="*")
