@@ -9,6 +9,13 @@ public class NotificationsController {
     @Autowired
     private NotificationsService notificationsService;
 
+    /**
+     * informs the user if it is a "cas contact"
+     * @param token in the request header
+     * @return a boolean
+     * true if the user is "cas contact"
+     * false otherwise
+     */
     @GetMapping("/mustbenotified")
     @CrossOrigin(origins="*")
     public Boolean mustbenotified  (@RequestHeader (name="Authorization") String token) {

@@ -15,6 +15,13 @@ public class NotificationsService {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * calls the CovidState microservice to know if the user is negative or not
+     * @param token
+     * @return a boolean
+     * true if the user is "negative"
+     * false otherwise
+     */
     public Boolean userIsNegative(String token){
 
         HttpHeaders headers = new HttpHeaders(); // set Content-Type and Accept headers
@@ -36,6 +43,13 @@ public class NotificationsService {
         return false;
     }
 
+    /**
+     * calls the SuspiciousPosition microservice to know if the user is suspicious or not
+     * @param token
+     * @return a boolean
+     * true if the user is "suspicious"
+     * false otherwise
+     */
     public Boolean userIsSuspicious(String token){
 
         HttpHeaders headers = new HttpHeaders();
@@ -62,6 +76,13 @@ public class NotificationsService {
         return false;
     }
 
+    /**
+     * calls the CovidState microservice to know if the user is new or not
+     * @param token
+     * @return a boolean
+     * true if the user is "new"
+     * false otherwise
+     */
     public Boolean userIsNew(String token){
 
         HttpHeaders headers = new HttpHeaders(); // set Content-Type and Accept headers
