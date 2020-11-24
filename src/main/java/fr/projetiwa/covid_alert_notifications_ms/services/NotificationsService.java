@@ -1,14 +1,19 @@
 package fr.projetiwa.covid_alert_notifications_ms.services;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 
-
+@Service
 public class NotificationsService {
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public Boolean userIsNegative(String token){
 
@@ -17,7 +22,6 @@ public class NotificationsService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)); // example of custom header
         headers.add("Authorization", token );
         HttpEntity request = new HttpEntity(headers);
-        RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = "http://localhost:3002/personState/isNegative";
 
         try {
@@ -39,7 +43,6 @@ public class NotificationsService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)); // example of custom header
         headers.add("Authorization", token );
         HttpEntity request = new HttpEntity(headers);
-        RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = "http://localhost:3005/suslocation/isSuspicious";
 
         try {
@@ -66,7 +69,6 @@ public class NotificationsService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)); // example of custom header
         headers.add("Authorization", token );
         HttpEntity request = new HttpEntity(headers);
-        RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = "http://localhost:3002/personState/isNew";
 
         try {

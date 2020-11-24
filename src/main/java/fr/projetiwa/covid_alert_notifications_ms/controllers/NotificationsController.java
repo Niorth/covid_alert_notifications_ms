@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/notifications")
 public class NotificationsController {
+    @Autowired
     private NotificationsService notificationsService;
 
     @GetMapping("/mustbenotified")
     @CrossOrigin(origins="*")
     public Boolean mustbenotified  (@RequestHeader (name="Authorization") String token) {
-        notificationsService = new NotificationsService();
 
         if(notificationsService.userIsNew(token)){
             System.out.println("user is new");
