@@ -42,7 +42,33 @@ public class NotificationsService {
 
         return false;
     }
+    /**
+     * calls the CovidState microservice to know if the user is contact or not
+     * @param token
+     * @return a boolean
+     * true if the user is "contact"
+     * false otherwise
+     */
+    public Boolean userIsContact(String token){
 
+        HttpHeaders headers = new HttpHeaders(); // set Content-Type and Accept headers
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)); // example of custom header
+        headers.add("Authorization", token );
+        HttpEntity request = new HttpEntity(headers);
+        String serviceUrl = "http://localhost:3002/personState/isContact";
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange( serviceUrl, HttpMethod.GET, request, String.class, 1 );
+            Boolean isContact = Boolean.parseBoolean(response.getBody());
+            System.out.println("isContact ? "+isContact);
+            return isContact;
+        }catch (HttpClientErrorException e){
+            System.out.println(e);
+        }
+
+        return false;
+    }
     /**
      * calls the SuspiciousPosition microservice to know if the user is suspicious or not
      * @param token

@@ -26,6 +26,9 @@ public class NotificationsController {
         }else if(notificationsService.userIsNegative(token) && notificationsService.userIsSuspicious(token)){
             System.out.println("user is negative and suspicious");
             return true;
+        }else if (notificationsService.userIsContact(token)){
+            System.out.println("user is contact");
+            return true;
         }
         return false;
 
